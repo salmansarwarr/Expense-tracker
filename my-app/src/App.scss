@@ -1,0 +1,314 @@
+//Imports
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Varela+Round&display=swap');
+
+//variables
+$primary-color: rgb(151, 19, 151);
+
+//Utilities
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.card {
+    margin: 0.5rem;
+    box-shadow: 0px 2px 3px $primary-color;
+    border-radius: 10px;
+    width: 80%;    
+    background-color: white;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+}
+
+body {
+    background: -webkit-linear-gradient(pink 40%, lightblue) no-repeat;
+}
+
+h1, h2 {
+    color: $primary-color;
+}
+
+h2 {
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+
+// HEADER
+header {
+    width: 100%;
+    padding: 1rem 0;
+    background-color: lightblue;
+    box-shadow: 2px 2px 5px $primary-color;
+
+    h1 {
+        font-family: 'Varela Round', sans-serif;
+        width: fit-content;
+        margin: 0 auto;
+        text-shadow: 2px 2px 2px pink;
+    }
+}
+
+// Main
+.main {
+    font-family: sans-serif;
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .balance-and-history {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        width: 520px;
+    }
+    .balance {
+        .container {
+            flex-direction: column;
+            height: 15rem;
+            h2 {
+                padding: 0;
+                text-align: left;
+                width: 250px;
+                margin: 0.5rem 0;
+                &:first-child span {
+                    color: black;
+                }
+                &:nth-child(2) span {
+                    color: green;
+                }
+                &:last-child span {
+                    color: red;
+                }
+            }
+        }
+    }
+    .history {
+        .container {
+            height: 15rem;
+            .none {
+                text-align: center;
+                width: 100%;
+                padding: 10px;
+            }
+            h2 {
+                padding: 10px 0;
+                width: 100%;
+                text-align: center;
+                box-shadow: 0px 1px 1px gray;
+            }
+            ul {
+                height: (240px - 49px);
+                overflow-y: scroll;
+                li {
+                    list-style-type: none;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    position: relative;
+                    padding: 10px;
+                    border-top: 1px solid black;
+                    text-transform: capitalize;
+                    button {
+                        border: none;
+                        position: absolute;
+                        background-color: rgb(255, 37, 37);
+                        font-size: small;
+                        color: white;
+                        height: 1.1rem;
+                        width: 1rem;
+                        border-radius: 3px;
+                        cursor: pointer;
+                        &:hover {
+                            outline: none;
+                            border: none;
+                            background-color: red;
+                            transform: scale(1.01);
+                        }
+                    }
+                    .name {
+                        margin-left: 2rem;
+                    }
+                }
+            }
+        }
+    }
+    .form {
+        padding: 1rem;
+        height: fit-content;
+        h2 {
+            box-shadow: 0px 1px 1px gray;
+        }
+        form {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 2rem;
+            .input-row {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                input {
+                    margin-top: 6px;
+                    margin-bottom: 2px;
+                    height: 1.6rem;
+                    width: 100%;
+                    padding-left: 5px;
+                    border-radius: 3px;
+                    border: 1px solid $primary-color;
+                    box-shadow: 0px 1px 1px pink;
+                    font-size: 0.92rem;
+                    &::placeholder {
+                        font-size: 0.92rem;
+                    }
+                    &:focus {
+                        outline: none;
+                        border: 1.5px solid darkgreen;
+                    }
+                }
+                &:first-child {
+                    margin-bottom: 0.5rem;
+                }
+                &:last-child {
+                    margin-top: 1rem;
+                }
+                button {
+                    background-color: rgb(255, 255, 100);
+                    border: none;
+                    padding: 8px;
+                    width: 100%;
+                    border-radius: 4px;
+                    box-shadow: 0px 1px 1px gray;
+                    &:hover {
+                        background-color: yellow;
+                    }
+                    &:active {
+                        background-color: rgb(255, 255, 100);
+                    }
+                }
+                .error {
+                    font-size: 11px;
+                    color: red;
+                }
+            }
+        }
+        img {
+            display: block;
+            height: 10rem;
+            object-fit: contain;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+// Media queries
+
+@media (max-width: 850px) {
+    .main {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+        .balance-and-history {
+            grid-template-rows: auto;
+            justify-self: center;
+            width: 100%;
+            height: fit-content;
+            .balance, .history {
+                width: auto;
+            }
+            .balance {
+                .container {
+                    height: auto;
+                    padding: 1rem 0;
+                }
+            }
+            .history {
+                height: fit-content;
+                align-self: center;
+                .container {
+                    height: fit-content;
+                    ul {
+                        height: auto;
+                        max-height: 140px;
+                    }
+                }
+            }
+        }
+        .form {
+            padding: 0;
+            form {
+                padding: 1rem;
+            }
+            img {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    header {
+        h1 {
+            font-size: 1.5em;
+        }
+    }
+    h2 {
+        font-size: 1em;
+    }
+    .history {
+        .none {
+            font-size: 12.5px;
+        }
+    }
+    .main {
+        .balance-and-history {
+            .balance {
+                .container {
+                    h2 {
+                        width: auto;
+                    }
+                }
+            }
+            .history {
+                ul {
+                    li {
+                        font-size: 13px;
+                        button {
+                            height: 15px;
+                            width: 15px;
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+        .form {
+            form {
+                .input-row {
+                    label {
+                        font-size: 12.5px;
+                    }
+                    input#name, input#price {
+                        height: 1.3rem;
+                        font-size: 0.85rem;
+                        &::placeholder {
+                            font-size: 0.85rem;
+                        }
+                    }
+                    .error {
+                        font-size: 10px;
+                    }
+                    button {
+                        font-size: 12px;
+                        padding: 6px;
+                    }
+                }
+            }
+        }
+    }
+}
